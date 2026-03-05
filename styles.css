@@ -2,6 +2,10 @@
   font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #1c1b19;
   background-color: #f7f5f1;
+  --facility-col-width: 180px;
+  --hour-count: 16;
+  --hour-cell-width: 80px;
+  --hour-gap: 0.45rem;
 }
 
 * {
@@ -78,11 +82,11 @@ body {
 
 .calendar-row {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: var(--facility-col-width) max-content;
   align-items: stretch;
   padding: 0.6rem 0.6rem;
   border-radius: 16px;
-  min-width: calc(200px + (16 * 82px));
+  min-width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)));
 }
 
 .calendar-row--head {
@@ -102,14 +106,16 @@ body {
   text-align: left;
   display: flex;
   align-items: center;
+  padding-right: 0.4rem;
 }
 
 .hour-row,
 .hour-cells {
-  display: flex;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(var(--hour-count), var(--hour-cell-width));
+  column-gap: var(--hour-gap);
   overflow-x: visible;
-  min-width: calc(16 * 82px);
+  width: max-content;
 }
 
 .hour-cells span,
@@ -119,7 +125,7 @@ body {
   align-items: center;
   font-size: 0.95rem;
   color: #1f1d18;
-  min-width: 72px;
+  width: var(--hour-cell-width);
 }
 
 .hour-cell-value {
@@ -173,20 +179,22 @@ body {
     padding: 1.5rem;
   }
 
+  .facility-name {
+    padding-right: 0.2rem;
+  }
+
   .calendar-row {
-    grid-template-columns: 1fr;
-    min-width: 100%;
+    grid-template-columns: var(--facility-col-width) max-content;
+    min-width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)));
   }
 
   .hour-row,
   .hour-cells {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    min-width: 100%;
+    grid-template-columns: repeat(var(--hour-count), var(--hour-cell-width));
   }
 
   .calendar-row--head span:first-child {
-    display: none;
+    visibility: visible;
   }
 }
 
