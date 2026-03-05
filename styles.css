@@ -68,7 +68,7 @@ body {
 
 .calendar-grid {
   background: #fefcf7;
-  padding: 0 1.25rem 1.25rem;
+  padding: 0 0.6rem 1rem;
   border-radius: 28px;
   display: flex;
   flex-direction: column;
@@ -80,9 +80,9 @@ body {
   display: grid;
   grid-template-columns: 200px 1fr;
   align-items: stretch;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 0.8rem;
   border-radius: 16px;
-  min-width: 1520px;
+  min-width: calc(200px + (16 * 80px));
 }
 
 .calendar-row--head {
@@ -109,7 +109,7 @@ body {
   display: flex;
   gap: 0.5rem;
   overflow-x: visible;
-  min-width: 1520px;
+  min-width: calc(16 * 80px);
 }
 
 .hour-cells span,
