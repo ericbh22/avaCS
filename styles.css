@@ -1,0 +1,210 @@
+:root {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1c1b19;
+  background-color: #f7f5f1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #f7f5f1;
+  padding: 2.5rem 2rem 3rem;
+}
+
+.calendar-shell {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #fefcf7;
+  border-radius: 32px;
+  padding: 2.5rem;
+  box-shadow: 0 30px 80px rgba(31, 24, 12, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.calendar-header button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: #241f1a;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.calendar-header button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.calendar-date {
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.calendar-range {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #7a746b;
+}
+
+.calendar-grid {
+  background: #fefcf7;
+  padding: 0 1.25rem 1.25rem;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow-x: auto;
+}
+
+.calendar-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: stretch;
+  padding: 0.6rem 1rem;
+  border-radius: 16px;
+  min-width: 1520px;
+}
+
+.calendar-row--head {
+  color: #8c867e;
+  font-size: 0.95rem;
+}
+
+.calendar-row--data {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(32, 28, 22, 0.08);
+  transition: background 0.2s ease;
+}
+
+.facility-name {
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.hour-row,
+.hour-cells {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: visible;
+  min-width: 1520px;
+}
+
+.hour-cells span,
+.hour-row span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #1f1d18;
+  min-width: 72px;
+}
+
+.hour-cell-value {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 12px;
+  min-height: 38px;
+  background: #fffefd;
+  border: 1px solid rgba(32, 28, 22, 0.08);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.hour-cell-value[data-level='empty'] {
+  color: #bbb4a9;
+}
+
+.hour-cell-value[data-level='low'] {
+  color: #d97706;
+}
+
+.hour-cell-value[data-level='medium'] {
+  color: #059669;
+}
+
+.hour-cell-value[data-level='high'] {
+  color: #1d4ed8;
+}
+
+.calendar-footer {
+  text-align: center;
+  color: #8c867e;
+  font-size: 0.9rem;
+}
+
+.calendar-empty {
+  text-align: center;
+  padding: 2rem 0;
+  color: #a39b8f;
+  font-size: 1rem;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .calendar-shell {
+    padding: 1.5rem;
+  }
+
+  .calendar-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hour-row,
+  .hour-cells {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+}
+
+
+#facility-rows .calendar-row--data:nth-child(6n + 1) {
+  background: #c8ceee;
+}
+
+#facility-rows .calendar-row--data:nth-child(6n + 2) {
+  background: #e8daf0;
+}
+
+#facility-rows .calendar-row--data:nth-child(6n + 3) {
+  background: #f3e4f5;
+}
+
+#facility-rows .calendar-row--data:nth-child(6n + 4) {
+  background: #fcdce1;
+}
+
+#facility-rows .calendar-row--data:nth-child(6n + 5) {
+  background: #d88bee;
+}
+
+#facility-rows .calendar-row--data:nth-child(6n + 6) {
+  background: #a7abde;
+}

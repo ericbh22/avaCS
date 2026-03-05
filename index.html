@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>avaCS — Court Availability</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="calendar-shell">
+      <header class="calendar-header">
+        <button id="prev-day" aria-label="Previous day">&#x276E;</button>
+        <div>
+          <p class="calendar-date" id="calendar-date">Loading…</p>
+          <p class="calendar-range" id="calendar-range"></p>
+        </div>
+        <button id="next-day" aria-label="Next day">&#x276F;</button>
+      </header>
+
+      <section class="calendar-grid">
+        <div class="calendar-row calendar-row--head">
+          <span>Facility</span>
+          <div id="hour-row" class="hour-row"></div>
+        </div>
+        <div id="facility-rows"></div>
+      </section>
+
+      <footer class="calendar-footer">
+        <p id="status-message">Loading snapshot…</p>
+      </footer>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
