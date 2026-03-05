@@ -80,9 +80,9 @@ body {
   display: grid;
   grid-template-columns: 200px 1fr;
   align-items: stretch;
-  padding: 0.6rem 0.8rem;
+  padding: 0.6rem 0.6rem;
   border-radius: 16px;
-  min-width: calc(200px + (16 * 80px));
+  min-width: calc(200px + (16 * 82px));
 }
 
 .calendar-row--head {
@@ -109,7 +109,7 @@ body {
   display: flex;
   gap: 0.5rem;
   overflow-x: visible;
-  min-width: calc(16 * 80px);
+  min-width: calc(16 * 82px);
 }
 
 .hour-cells span,
@@ -175,12 +175,18 @@ body {
 
   .calendar-row {
     grid-template-columns: 1fr;
+    min-width: 100%;
   }
 
   .hour-row,
   .hour-cells {
     flex-wrap: nowrap;
     overflow-x: auto;
+    min-width: 100%;
+  }
+
+  .calendar-row--head span:first-child {
+    display: none;
   }
 }
 
