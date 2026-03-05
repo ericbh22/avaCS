@@ -53,6 +53,8 @@ async function loadSnapshot() {
 }
 
 function applySnapshot(snapshot) {
+  const previouslySelectedDay = state.days[state.activeDayIndex];
+
   state.facilities = snapshot.facilities || [];
   state.hours = snapshot.hours?.length ? snapshot.hours : DEFAULT_HOURS;
   state.generatedAt = snapshot.generatedAt ? new Date(snapshot.generatedAt) : null;
@@ -62,15 +64,45 @@ function applySnapshot(snapshot) {
 
   const providedDays = (snapshot.days || []).map((day) => startOfDay(new Date(day))).filter(isValidDate);
   state.days = ensureDays(providedDays, state.facilities);
-  state.activeDayIndex = 0;
+  state.activeDayIndex = determineActiveDayIndex(previouslySelectedDay, state.days);
+}
+
+function determineActiveDayIndex(previouslySelectedDay, days) {
+  if (!days.length) return 0;
+
+  if (previouslySelectedDay) {
+    const previousIndex = days.findIndex((day) => formatDayKey(day) === formatDayKey(previouslySelectedDay));
+    if (previousIndex !== -1) {
+      return previousIndex;
+    }
+  }
+
+  const today = startOfDay(new Date());
+  const todayKey = formatDayKey(today);
+  const todayIndex = days.findIndex((day) => formatDayKey(day) === todayKey);
+  if (todayIndex !== -1) {
+    return todayIndex;
+  }
+
+  const futureIndex = days.findIndex((day) => day > today);
+  if (futureIndex !== -1) {
+    return futureIndex;
+  }
+
+  return 0;
 }
 
 function ensureDays(days, facilities) {
-  const list = days.slice(0, DAYS_TO_RENDER);
-  const fallbackStart = getEarliestSlotDate(facilities) || startOfDay(new Date());
+  const today = startOfDay(new Date());
+  const futureDays = days.filter((day) => day >= today);
+
+  const list = futureDays.slice(0, DAYS_TO_RENDER);
+
+  const fallbackStart = getEarliestSlotDate(facilities) || today;
   if (!list.length) {
     list.push(fallbackStart);
   }
+
   while (list.length < DAYS_TO_RENDER) {
     list.push(addDays(list[list.length - 1], 1));
   }
