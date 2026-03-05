@@ -5,6 +5,7 @@ const FACILITIES = [
   { id: 'aqualink-box-hill', short: 'Aqualink' },
   { id: 'mullum-mullum-stadium', short: 'Mullum' },
   { id: 'dandenong-stadium', short: 'Dande' },
+  { id: 'darebin-civic-centre', short: 'Darebin' },
 ];
 
 const SNAPSHOT_URL = 'data/calendars.json';

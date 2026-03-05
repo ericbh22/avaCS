@@ -40,6 +40,12 @@ const FACILITIES = [
     endpoint:
       'https://activemonash.perfectgym.com.au/ClientPortal2/api/Calendars/ClubZoneOccupancyCalendar/GetCalendar?calendarId=68534c6610&daysPerPage=4',
   },
+  {
+    id: 'darebin-civic-centre',
+    name: 'Darebin Community Sports Centre',
+    endpoint:
+      'https://darebin.perfectgym.com.au/ClientPortal2/api/Calendars/ClubZoneOccupancyCalendar/GetCalendar?calendarId=09869a3c4',
+  },
 ];
 
 const HOURS = Array.from({ length: 16 }, (_, index) => 8 + index); // 8am–11pm

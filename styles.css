@@ -85,8 +85,10 @@ body {
   grid-template-columns: var(--facility-col-width) max-content;
   align-items: stretch;
   padding: 0.6rem 0.6rem;
+  padding-right: 1rem;
   border-radius: 16px;
-  min-width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)));
+  width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)) + 1rem);
+  min-width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)) + 1rem);
 }
 
 .calendar-row--head {
@@ -185,7 +187,8 @@ body {
 
   .calendar-row {
     grid-template-columns: var(--facility-col-width) max-content;
-    min-width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)));
+    width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)) + 1rem);
+    min-width: calc(var(--facility-col-width) + (var(--hour-count) * var(--hour-cell-width)) + ((var(--hour-count) - 1) * var(--hour-gap)) + 1rem);
   }
 
   .hour-row,
